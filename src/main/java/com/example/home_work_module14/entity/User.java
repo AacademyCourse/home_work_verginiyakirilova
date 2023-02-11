@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,5 +32,8 @@ public class User {
 
        @Column(name = "time")
        private Instant createdAt = Instant.now();
+
+       @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+       private Set<Address> addresses;
 
     }
