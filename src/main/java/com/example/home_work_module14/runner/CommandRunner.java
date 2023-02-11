@@ -16,12 +16,12 @@ public class CommandRunner implements CommandLineRunner {
     UserRepository userRepository;
     @Override
     public void run(String... args) throws Exception {
-            createUser();
-            createAddress();
+            createTableUser();
+            createTableAddress();
 
     }
 
-    public void createUser(){
+    public void createTableUser(){
         User user = new User();
         user.setFirst_name("Ivan");
         user.setLast_name("Ivanov");
@@ -38,7 +38,7 @@ public class CommandRunner implements CommandLineRunner {
         userRepository.save(user);
         userRepository.save(user1);
      }
-   public void createAddress(){
+   public void createTableAddress(){
         Address address = new Address();
         address.setCountry("Bulgaria");
         address.setCity("Sofiq");

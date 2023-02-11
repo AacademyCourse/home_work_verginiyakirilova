@@ -3,8 +3,6 @@ package com.example.home_work_module14.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,8 +26,5 @@ public class Address {
 
     @Column(name = "Street_number")
     private String street_number;
-
-    @ManyToOne
-    private User user;
 
 }
