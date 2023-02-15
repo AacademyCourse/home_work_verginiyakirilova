@@ -1,6 +1,6 @@
 spring:
   datasource:
-    password: ""
+    password:
     url: jdbc:mysql://127.0.0.1:3306/home_work_db?createDatabaseIfNotExist=true
     username: root
   jpa:

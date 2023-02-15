@@ -48,7 +48,6 @@ public class CommandRunner implements CommandLineRunner {
     }
     public void createUser(){
         List<Role> savedRoles = createRole();
-        Set<Address> addresses = createAddress();
         User user = new User();
         user.setFirst_name("Ivan");
         user.setLast_name("Ivanov");
@@ -56,21 +55,20 @@ public class CommandRunner implements CommandLineRunner {
         user.setEmail("vankata@abv.bg");
         user.setCreatedAt(user.getCreatedAt());
         Set<Role> rolesForUser = new HashSet<>(savedRoles);
-        user.setRoles(rolesForUser);
-        user.setAddresses(addresses);
+        user.getRoles().add(savedRoles.get(0));
         userRepository.save(user);
 
-        User user1 = new User();
-        user1.setFirst_name("Petar");
-        user1.setLast_name("Petkov");
-        user1.setPhone_number("088896354");
-        user1.setEmail("petko@abv.bg");
-        user1.setCreatedAt(user.getCreatedAt());
-        user1.setRoles(rolesForUser);
-        user1.setAddresses(addresses);
-        userRepository.save(user1);
+//        User user1 = new User();
+//        user1.setFirst_name("Petar");
+//        user1.setLast_name("Petkov");
+//        user1.setPhone_number("088896354");
+//        user1.setEmail("petko@abv.bg");
+//        user1.setCreatedAt(user.getCreatedAt());
+//        user1.setRoles(rolesForUser);
+//        user1.setAddresses(addresses);
+//        userRepository.save(user1);
      }
-   public Set<Address> createAddress(){
+   public List<Address> createAddress(){
         Address address = new Address();
         address.setCountry("Bulgaria");
         address.setCity("Sofiq");
@@ -83,7 +81,7 @@ public class CommandRunner implements CommandLineRunner {
        address1.setStreet("Osmi primorski polk");
        address1.setStreet_number("10");
 
-       Set<Address> addAddress = Set.of(address,address1);
+       List<Address> addAddress = List.of(address,address1);
        addressRepository.saveAll(addAddress);
        return addAddress;
     }

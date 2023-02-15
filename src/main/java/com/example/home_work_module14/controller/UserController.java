@@ -30,6 +30,7 @@ public class UserController {
     public User createUser (@RequestBody User user){
        return userService.saveUser(user);
     }
+
     @DeleteMapping(path = "/delete/{id}")
     public String deleteUser(@PathVariable Long id){
          this.userService.deleteById(id);

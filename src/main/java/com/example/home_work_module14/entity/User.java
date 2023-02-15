@@ -10,15 +10,14 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 @ToString
-@Entity(name = "users_name")
+@Entity
+@Table(name = "users")
 public class User {
        @Id
-       @GeneratedValue(strategy = GenerationType.SEQUENCE)
-       @Column(name = "id", nullable = false)
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
        private Long id;
 
        @Column(name = "First_Name", length = 50)
@@ -40,7 +39,7 @@ public class User {
        @JsonManagedReference
        private Set<Address> addresses = new HashSet<>();
 
-       @ManyToMany
+       @ManyToMany(fetch = FetchType.EAGER)
        @JoinTable(
                name = "user_roles",
                joinColumns = {@JoinColumn(name = "user_id")},
